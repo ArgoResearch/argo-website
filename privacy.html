@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Argo Research — Privacy Notice</title>
+  <meta name="theme-color" content="#0a0c10" />
+  <link rel="icon" type="image/svg+xml" href="argo_favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg:          #f5f4f1;
+      --surface:     #ffffff;
+      --border:      #d6d3cc;
+      --border-dark: #a09d96;
+      --accent:      #1a1a1a;
+      --accent-blue: #2a4fff;
+      --text:        #1a1a1a;
+      --text-muted:  #5a5750;
+      --note-bg:     #eeecea;
+      --note-border: #b0ada6;
+      --font:        'JetBrains Mono', 'Courier New', monospace;
+      --max-w:       860px;
+      --page-pad:    clamp(1rem, 5vw, 3rem);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 15px;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Layout shell ── */
+    .page-wrap {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 3rem var(--page-pad) 5rem;
+    }
+
+    /* ── Header / identity block ── */
+    .doc-header {
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .company-name {
+      font-size: clamp(1rem, 2.5vw, 1.15rem);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.15rem;
+    }
+
+    .company-meta {
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .doc-title {
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 0.4rem;
+    }
+
+    .doc-subtitle {
+      font-size: 0.82rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--text-muted);
+      margin-bottom: 1.8rem;
+    }
+
+    /* ── Meta table (document reference block) ── */
+    .meta-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.78rem;
+    }
+
+    .meta-table td {
+      padding: 0.35rem 0.75rem;
+      border: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    .meta-table td:first-child {
+      font-weight: 700;
+      white-space: nowrap;
+      background: var(--note-bg);
+      width: 42%;
+    }
+
+    /* ── Section headings ── */
+    h1 {
+      font-size: clamp(1rem, 2.5vw, 1.15rem);
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1.5px solid var(--accent);
+    }
+
+    h2 {
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      font-size: 0.88rem;
+      margin-bottom: 0.9rem;
+    }
+
+    ul, ol {
+      padding-left: 1.4rem;
+      margin-bottom: 0.9rem;
+    }
+
+    li {
+      font-size: 0.88rem;
+      margin-bottom: 0.35rem;
+    }
+
+    /* ── Callout / note boxes ── */
+    .callout {
+      background: var(--note-bg);
+      border-left: 3px solid var(--note-border);
+      padding: 0.9rem 1.1rem;
+      margin: 1.2rem 0;
+      font-size: 0.84rem;
+    }
+
+    .callout strong {
+      display: block;
+      margin-bottom: 0.3rem;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* ── Data tables ── */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      margin: 1rem 0 1.5rem;
+      overflow-x: auto;
+      display: block;
+    }
+
+    .data-table th,
+    .data-table td {
+      padding: 0.5rem 0.75rem;
+      border: 1px solid var(--border);
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .data-table th {
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .data-table tr:nth-child(even) td {
+      background: var(--note-bg);
+    }
+
+    /* Contact table (2-col, no header row) */
+    .contact-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.84rem;
+      margin: 1rem 0 1.5rem;
+    }
+
+    .contact-table td {
+      padding: 0.45rem 0.75rem;
+      border: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    .contact-table td:first-child {
+      font-weight: 700;
+      background: var(--note-bg);
+      white-space: nowrap;
+      width: 35%;
+    }
+
+    /* Phase retention table */
+    .phase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      margin: 1rem 0 1.5rem;
+    }
+
+    .phase-table th,
+    .phase-table td {
+      padding: 0.55rem 0.75rem;
+      border: 1px solid var(--border);
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .phase-table th {
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .phase-table td:first-child {
+      font-weight: 700;
+      background: var(--note-bg);
+    }
+
+    /* Rights table */
+    .rights-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      margin: 1rem 0 1.5rem;
+    }
+
+    .rights-table th,
+    .rights-table td {
+      padding: 0.5rem 0.75rem;
+      border: 1px solid var(--border);
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .rights-table th {
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .rights-table tr:nth-child(even) td {
+      background: var(--note-bg);
+    }
+
+    /* ── Inline code / tags ── */
+    code {
+      font-family: var(--font);
+      font-size: 0.85em;
+      background: var(--note-bg);
+      border: 1px solid var(--border);
+      padding: 0.05em 0.35em;
+      border-radius: 2px;
+    }
+
+    /* ── Footer ── */
+    .doc-footer {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1.5px solid var(--accent);
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .doc-footer-ref {
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    /* ── Responsive overrides ── */
+    @media (max-width: 600px) {
+      html { font-size: 14px; }
+
+      .meta-table td:first-child { width: auto; }
+
+      .data-table {
+        font-size: 0.76rem;
+      }
+
+      .data-table th,
+      .data-table td {
+        padding: 0.4rem 0.5rem;
+      }
+
+      .contact-table td:first-child {
+        width: auto;
+      }
+
+      .phase-table th,
+      .phase-table td {
+        padding: 0.4rem 0.5rem;
+      }
+    }
+
+    @media (max-width: 400px) {
+      h1 { font-size: 0.92rem; }
+    }
+
+    /* ── Print ── */
+    @media print {
+      body { background: #fff; }
+      .page-wrap { padding: 1.5cm; }
+      h1 { page-break-after: avoid; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- ═══════════════════════════════════════════
+       DOCUMENT HEADER
+  ═══════════════════════════════════════════ -->
+  <header class="doc-header">
+    <h1 class="doc-title" style="border:none; margin-top:0; text-transform:none; letter-spacing:-0.02em; padding-bottom:0;">PRIVACY NOTICE</h1>
+    <p class="doc-subtitle">Information for Data Subjects pursuant to Article 14<br>EU GDPR / UK GDPR</p>
+
+    <table class="meta-table">
+      <tbody>
+        <tr><td>Document Reference</td><td>AR-PN-001</td></tr>
+        <tr><td>Version</td><td>1.1</td></tr>
+        <tr><td>Date</td><td>April 2026</td></tr>
+        <tr><td>Classification</td><td>Public</td></tr>
+        <tr><td>Prepared by</td><td>Argo Research Ltd</td></tr>
+        <tr><td>Legal Basis</td><td>Article 6(1)(f) GDPR &mdash; Legitimate Interest</td></tr>
+        <tr><td>Review Trigger</td><td>Any material change to processing scope or applicable law</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout" style="margin-top:1.4rem;">
+      <strong>NOTE</strong>
+      This notice is addressed to: (a) Italian natural persons who are the registered owners of Italian property assets (Stream A); and (b) Italian natural persons who are directors or shareholders of legal entities that own Italian property assets (Stream B). In both cases, your personal data has been collected by Argo Research Ltd from Italian public registries in connection with its real estate intelligence services. It is published on the Argo Research Ltd website (<a href="https://argo-research.com/privacy.html" style="color:inherit;">https://argo-research.com/privacy.html</a>) in fulfilment of the information obligations under Article 14 of the EU GDPR and UK GDPR.
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════
+       1. WHO WE ARE
+  ═══════════════════════════════════════════ -->
+  <h1>1. &nbsp;Who We Are</h1>
+
+  <p>This privacy notice is provided by Argo Research Ltd (&ldquo;Argo&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;), a company incorporated under the laws of England and Wales (Company Number: 16287925), with registered office at 71-75 Shelton Street, London, United Kingdom.</p>
+
+  <p>Argo is a real estate intelligence company. We collect, structure, and analyse property data from open sources including, among others, Italian public registries &mdash; principally the Catasto (Italian cadastral registry) and the Camera di Commercio (Italian company registry) &mdash; and deliver real estate intelligence reports to professional clients including investment funds, private equity firms, real estate agencies, and developers.</p>
+
+  <table class="contact-table">
+    <tbody>
+      <tr><td>Controller</td><td>Argo Research Ltd, 71-75 Shelton Street, London, United Kingdom</td></tr>
+      <tr><td>Email</td><td>privacy@argo-research.com</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ═══════════════════════════════════════════
+       2. WHY WE PROCESS YOUR PERSONAL DATA
+  ═══════════════════════════════════════════ -->
+  <h1>2. &nbsp;Why We Process Your Personal Data</h1>
+
+  <p>We process personal data of Italian natural persons &mdash; whether they own property directly as individuals (Stream A), or are directors or shareholders of a legal entity that owns property (Stream B) &mdash; for one specific purpose: to provide real estate intelligence services to our professional clients who are evaluating potential property acquisitions. This processing has the following characteristics:</p>
+
+  <ul>
+    <li>It is always initiated by a specific, defined client mandate with clear search criteria (property type, location, value range). We do not collect personal data speculatively or in bulk.</li>
+    <li>Your personal data is accessed as a consequence of your ownership of, or association with, a property asset that matches a client&rsquo;s investment criteria. The asset is the primary subject of the intelligence exercise, not you as an individual.</li>
+    <li>We do not profile, score, rank, or make automated decisions about individuals. Our outputs describe assets; owner identity is incidental to the asset description.</li>
+    <li>Where a property is owned by a company, the core of our intelligence relates to the legal entity. Your personal data (as a director or shareholder) is accessed only where a client needs to identify the natural persons associated with the owning entity.</li>
+  </ul>
+
+  <h2>2.1 &nbsp;Legal Basis</h2>
+
+  <p>We rely on Article 6(1)(f) of the EU GDPR &mdash; legitimate interest &mdash; as the legal basis for processing your personal data. Our legitimate interest is the commercial provision of real estate intelligence services to professional investors who require accurate, structured ownership information for due diligence and acquisition purposes.</p>
+
+  <p>We have conducted a Legitimate Interest Assessment in which we weighed our interest against your rights and reasonable expectations as a data subject. The factors supporting our legitimate interest include:</p>
+
+  <ul>
+    <li>Italian cadastral and company registry data is publicly accessible by design. We do not access data that is not already in the public domain.</li>
+    <li>We apply your data only to the specific investment mandate for which it was retrieved. We do not use it for any other purpose.</li>
+    <li>We do not produce solvency assessments, credit ratings, or individual profiles. Our output is an asset description.</li>
+    <li>Your personal data is never stored in identifiable form in our primary database. It is retrieved only when a client explicitly selects a specific property and requests ownership details, and is discarded immediately after the report is produced. See Section 6.</li>
+    <li>You have an absolute right to object to this processing at any time. See Section 7.</li>
+  </ul>
+
+  <div class="callout">
+    <strong>NOTE</strong>
+    Reliance on legitimate interest does not override your rights as a data subject. If you object to the processing of your personal data, we will cease processing without requiring you to provide justification. See Section 7 for how to exercise this right.
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       3. WHAT PERSONAL DATA WE PROCESS
+  ═══════════════════════════════════════════ -->
+  <h1>3. &nbsp;What Personal Data We Process</h1>
+
+  <p>The personal data we process depends on whether you own the relevant property as a natural person or through a company.</p>
+
+  <h2>3.1 &nbsp;Properties Owned by Natural Persons (Stream A)</h2>
+
+  <p>Where the registered owner of a property is a natural person, we collect the following data from the Italian cadastral registry:</p>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Data field</th>
+        <th>Collected</th>
+        <th>Justification</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Owner name and surname</td>
+        <td>Always</td>
+        <td>Identifies the counterparty to any potential transaction</td>
+      </tr>
+      <tr>
+        <td>Property address / cadastral ref.</td>
+        <td>Always</td>
+        <td>Identifies the specific asset subject to the report</td>
+      </tr>
+      <tr>
+        <td>Ownership share percentage</td>
+        <td>Always</td>
+        <td>Determines whether a transaction requires one or multiple owners</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>3.2 &nbsp;Properties Owned Through a Company (Stream B)</h2>
+
+  <p>Where the registered owner of a property is a legal entity, we cross-reference the Camera di Commercio to identify the owning entity and, where required by a client, the natural persons associated with it. The distinction between company-level context data and personal data is set out below:</p>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Data field</th>
+        <th>Category</th>
+        <th>Source</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Owning company name and registration</td>
+        <td>Company context &mdash; not personal data</td>
+        <td>Cadastral registry / Camera di Commercio</td>
+      </tr>
+      <tr>
+        <td>Company structure and ownership</td>
+        <td>Company context &mdash; not personal data</td>
+        <td>Camera di Commercio</td>
+      </tr>
+      <tr>
+        <td>Director names</td>
+        <td>Personal data &mdash; natural person</td>
+        <td>Camera di Commercio</td>
+      </tr>
+      <tr>
+        <td>Shareholder names (natural persons)</td>
+        <td>Personal data &mdash; natural person</td>
+        <td>Camera di Commercio</td>
+      </tr>
+      <tr>
+        <td>Roles and ownership stakes held by natural persons</td>
+        <td>Personal data &mdash; natural person</td>
+        <td>Camera di Commercio</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Personal data of natural persons (director and shareholder names, roles) is retrieved only where a client explicitly requests ownership details for a specific property. It is discarded immediately after the report is produced and is never stored in identifiable form. Company-level data is retained as part of the property record for the duration of the mandate retention period (see Section 6).</p>
+
+  <h2>3.3 &nbsp;What We Do Not Collect</h2>
+
+  <p>We do not collect or process: special categories of personal data under Article 9 GDPR (health, racial or ethnic origin, political opinions, religious beliefs, trade union membership, genetic or biometric data, sexual orientation); criminal conviction or offence data under Article 10 GDPR; financial account details, credit scores, or individual solvency assessments; or any personal data not obtainable from the Italian cadastral registry or the Camera di Commercio.</p>
+
+  <!-- ═══════════════════════════════════════════
+       4. WHERE YOUR DATA COMES FROM
+  ═══════════════════════════════════════════ -->
+  <h1>4. &nbsp;Where Your Data Comes From</h1>
+
+  <p>We collect your personal data exclusively from Italian public registries &mdash; specifically the Catasto (managed by the Agenzia delle Entrate) and, for company-owned properties, the Camera di Commercio. We do not collect data directly from you, and we do not purchase data from private data brokers.</p>
+
+  <p>We access these registries via a licensed third-party API provider. That provider is an independent data controller operating under an authorisation issued pursuant to Article 134 of the Italian Consolidated Law on Public Security (TULPS) and the Garante-approved Code of Conduct for commercial information services (Decision 181/2021).</p>
+
+  <p>Where a client&rsquo;s mandate requires it, we may also collect financial and contextual signals relating to a matched property from Italian official registers and from publicly available sources accessed via automated collection. This enrichment is applied only after a property has matched a client&rsquo;s investment criteria. The primary focus of this enrichment is asset-level and entity-level information. Where personal data of natural persons appears incidentally in these sources (for example, in an insolvency filing naming an individual), it is not retained and is discarded upon completion of the relevant report.</p>
+
+  <!-- ═══════════════════════════════════════════
+       5. WHO RECEIVES YOUR PERSONAL DATA
+  ═══════════════════════════════════════════ -->
+  <h1>5. &nbsp;Who Receives Your Personal Data</h1>
+
+  <p>Your personal data is disclosed only to the following categories of recipients:</p>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Recipient</th>
+        <th>Basis and restrictions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Professional clients (investment funds, real estate agencies, developers)</td>
+        <td>Received as independent data controllers. Each client contract restricts use of the data to the specific investment mandate for which it was requested, prohibits resale or onward transfer, and requires deletion upon conclusion or abandonment of that mandate.</td>
+      </tr>
+      <tr>
+        <td>API provider (licensed commercial information operator)</td>
+        <td>Independent data controller operating under Art. 134 TULPS licence and the Garante Code of Conduct (Decision 181/2021).</td>
+      </tr>
+      <tr>
+        <td>Competent supervisory authorities</td>
+        <td>Where required by applicable law, including upon request by the Italian Garante or the UK ICO.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>We do not sell your personal data. We do not transfer your personal data for marketing purposes.</p>
+
+  <h2>5.1 &nbsp;International Transfers</h2>
+
+  <p>Argo is a UK-established company. When we process your data in our UK-based systems, this constitutes a transfer from the EU to the UK. This transfer is lawful on the basis of the European Commission&rsquo;s adequacy decision in respect of the UK (adopted June 2021). We monitor the status of this decision on an ongoing basis. If the decision is suspended or revoked, we will activate Standard Contractual Clauses as the fallback transfer mechanism.</p>
+
+  <p>Where any client is established outside the European Economic Area, we verify the existence of an appropriate transfer mechanism before disclosing your data to that client.</p>
+
+  <!-- ═══════════════════════════════════════════
+       6. HOW LONG WE KEEP YOUR PERSONAL DATA
+  ═══════════════════════════════════════════ -->
+  <h1>6. &nbsp;How Long We Keep Your Personal Data</h1>
+
+  <p>Our data architecture is designed to minimise the period during which your personal data is held in identifiable form. We operate in two distinct phases:</p>
+
+  <table class="phase-table">
+    <thead>
+      <tr>
+        <th>Phase</th>
+        <th>What is held</th>
+        <th>Retention period</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Phase 1 &mdash; Property screening</td>
+        <td>Property records with personal identifiers held in pseudonymised (encrypted) form only. Your name and other identifying details are not stored in readable form at this stage.</td>
+        <td>Retained for the duration of the client mandate for which the data was collected, plus twelve months from the date of mandate conclusion or abandonment, then deleted.</td>
+      </tr>
+      <tr>
+        <td>Phase 2 &mdash; Ownership detail retrieval</td>
+        <td>Your personal data in identifiable form is retrieved from the source registry only when a client explicitly selects a specific property and requests ownership details. This retrieval is subject to human confirmation before any output is produced.</td>
+        <td>Discarded immediately after the relevant intelligence report is produced. Your personal data is never written to our primary database in identifiable form and is not retained beyond the report generation session.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>If you exercise your right to object (Section 7.1) or your right to erasure (Section 7.2), we will cease processing and delete your data immediately, subject to any overriding legal obligation to retain it.</p>
+
+  <!-- ═══════════════════════════════════════════
+       7. YOUR RIGHTS AS A DATA SUBJECT
+  ═══════════════════════════════════════════ -->
+  <h1>7. &nbsp;Your Rights as a Data Subject</h1>
+
+  <p>As a natural person whose data we process, you have the following rights under the EU GDPR. We are required to respond to any request within one calendar month of receipt.</p>
+
+  <h2>7.1 &nbsp;The Right to Object (Article 21 GDPR)</h2>
+
+  <div class="callout">
+    <strong>IMPORTANT</strong>
+    Because we rely on legitimate interest as our legal basis, you have an absolute right to object to the processing of your personal data at any time. You do not need to provide a reason or demonstrate that your interests override ours. Upon receipt of a valid objection, we will cease processing your data without delay and will not process it again for the same purpose.
+  </div>
+
+  <p>To exercise your right to object, email us at: <strong>privacy@argo-research.com</strong>. State clearly that you are exercising your right to object under Article 21 GDPR and include sufficient information for us to identify your data (your name, the property address, or both). We will confirm receipt within five working days.</p>
+
+  <h2>7.2 &nbsp;Other Rights</h2>
+
+  <p>You also have the following rights, exercisable by contacting us at the address in Section 11:</p>
+
+  <table class="rights-table">
+    <thead>
+      <tr>
+        <th>Right</th>
+        <th>What it means in practice</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Access (Art. 15)</td>
+        <td>Request confirmation of whether we hold your data and, if so, a copy together with details of how we use it.</td>
+      </tr>
+      <tr>
+        <td>Rectification (Art. 16)</td>
+        <td>Request correction of inaccurate personal data we hold about you.</td>
+      </tr>
+      <tr>
+        <td>Erasure (Art. 17)</td>
+        <td>Request deletion of your personal data where it is no longer necessary for the purposes for which it was collected, or where you have successfully exercised your right to object.</td>
+      </tr>
+      <tr>
+        <td>Restriction (Art. 18)</td>
+        <td>Request that we temporarily suspend processing while we consider your objection or rectification request.</td>
+      </tr>
+      <tr>
+        <td>Complaint to supervisory authority</td>
+        <td>Lodge a complaint with the Italian Garante (<a href="https://www.garanteprivacy.it" style="color:inherit;">www.garanteprivacy.it</a>) or, if you are based in the UK, with the ICO (<a href="https://www.ico.org.uk" style="color:inherit;">www.ico.org.uk</a>).</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Note: the right to data portability (Art. 20) does not apply to our processing, as we process your data on the basis of legitimate interest rather than consent or contract, and you did not provide the data directly to us.</p>
+
+  <!-- ═══════════════════════════════════════════
+       8. SECURITY
+  ═══════════════════════════════════════════ -->
+  <h1>8. &nbsp;Security</h1>
+
+  <p>We implement appropriate technical and organisational measures to protect your personal data against unauthorised access, loss, alteration, or disclosure. These measures include:</p>
+
+  <ul>
+    <li><strong>Pseudonymisation:</strong> personal identifiers are stored in encrypted, pseudonymised form in our primary database and are never held in plaintext in persistent storage. Identifiable personal data exists in our systems only transiently, during the production of a specific report on explicit client request, and is discarded immediately after use.</li>
+    <li>Encryption of data at rest and in transit.</li>
+    <li>Access controls restricting data access to authorised personnel only.</li>
+    <li>A documented breach detection and notification procedure aligned with the 72-hour reporting obligation under Article 33 GDPR.</li>
+  </ul>
+
+  <p>In the event of a personal data breach likely to result in a high risk to your rights and freedoms, we will notify you without undue delay in accordance with Article 34 GDPR.</p>
+
+  <!-- ═══════════════════════════════════════════
+       9. AUTOMATED DECISION-MAKING AND PROFILING
+  ═══════════════════════════════════════════ -->
+  <h1>9. &nbsp;Automated Decision-Making and Profiling</h1>
+
+  <p>We do not carry out automated decision-making or profiling within the meaning of Article 22 GDPR. No decision producing legal or similarly significant effects on you is taken solely on the basis of automated processing of your personal data. Our intelligence reports describe property assets; any decision about whether to approach a property owner is taken independently by our professional clients.</p>
+
+  <!-- ═══════════════════════════════════════════
+       10. UPDATES TO THIS NOTICE
+  ═══════════════════════════════════════════ -->
+  <h1>10. &nbsp;Updates to This Notice</h1>
+
+  <p>We may update this notice from time to time to reflect changes in our processing activities, applicable law, or regulatory guidance. The current version will always be available at <span style="text-decoration:underline;">[URL &mdash; to be inserted upon publication]</span>. Material changes will be indicated by an updated version number and date at the top of the document.</p>
+
+  <p>This notice was last reviewed and published in April 2026.</p>
+
+  <!-- ═══════════════════════════════════════════
+       11. HOW TO CONTACT US
+  ═══════════════════════════════════════════ -->
+  <h1>11. &nbsp;How to Contact Us</h1>
+
+  <p>For any question about this notice, to exercise your data subject rights, or to submit an Article 21 objection, please use the contact details below. We will acknowledge your request within five working days and respond in full within one calendar month.</p>
+
+  <table class="contact-table">
+    <tbody>
+      <tr>
+        <td>Email (preferred)</td>
+        <td>privacy@argo-research.com</td>
+      </tr>
+      <tr>
+        <td>Post</td>
+        <td>Argo Research Ltd, 71-75 Shelton Street, London, United Kingdom</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+</div><!-- /.page-wrap -->
+</body>
+</html>
